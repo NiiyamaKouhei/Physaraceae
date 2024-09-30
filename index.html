@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout Based on Image Height</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"/>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const variableFont = document.getElementById('variable-font');
+
+            // キャレットを末尾に移動する関数
+            function moveCaretToEnd(el) {
+                const range = document.createRange();
+                const sel = window.getSelection();
+                range.selectNodeContents(el);
+                range.collapse(false);
+                sel.removeAllRanges();
+                sel.addRange(range);
+            }
+
+            // 初期フォーカス時にキャレットを末尾に移動
+            variableFont.focus();
+            moveCaretToEnd(variableFont);
+
+            // 入力内容を大文字に変換し、キャレットを末尾に移動
+            variableFont.addEventListener('input', function() {
+                const content = variableFont.textContent;
+                variableFont.textContent = content.toUpperCase();
+                moveCaretToEnd(variableFont);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <img src="img/yt.svg" id="yt" onclick="window.location.href='https://www.youtube.com/@user-r6z3343333'" onmouseover="this.style.cursor='pointer'">
+    <div class="container">
+        <div id="left-content" class="left-content">
+            <video src="img/top.webm" alt="Sample Image" class="full-height-image" autoplay loop muted></video>
+        </div>
+        <div id="right-content" class="right-content">
+            <div class="scroll-content">
+                <div class="title">
+                    <h1>Kohei Niiyama</h1>
+                    <img src="img/title.svg" alt="title" id="title-image">
+                </div>
+                <div class="preview">
+                    <h1>Preview</h1>
+                    <div class="fonts">
+                        <h1 id="variable-font" class="nenkin" contenteditable="true" style="caret-color: auto;">ABCDEFGHIJKLMNOPQRSTUVWXYZ</h1>
+                    </div>
+                    <div class="right">
+                        <div class="slider-container">
+                            <h1>Variable</h1>
+                            <input type="range" min="100" max="1000" value="600" id="font-slider" class="slider"> 
+                        </div>
+                    </div>
+                </div>
+                <div class="about">
+                    <h1>About</h1>
+                    <p>Physaraceae Font （粘菌フォント）は、粘菌の動きをシミュレーションし、その成長や変化をバリアブルフォントで再現した実験的なフォントです。<br>
+                        粘菌が時間とともに形を変える特性に着目し、デジタルメディアと有機的な動きを融合させました。<br>
+                        フォントデータはコンピューターによる客観的な計算に基づき、粘菌の自然な形状を再現しています。
+                    </p>
+                    <br><br><br>
+                    <h1>Process</h1>
+                    <p id="p-process">粘菌による文字の造形</p>
+                    <img src="img/process.svg" alt="Process" id="process-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="middle-content">
+        <img src="img/big.svg" id="big-image">
+        <div class="sentence-full">
+            <div class="sentence">
+                <h1>148px<h1>
+                <h4>Focusing on the aracteristic</h4>
+                <br><br><br>
+                <h1>84px<h1>
+                <h2>Focusing on the<br> aracteristic of slime mold</h2>
+                <br><br><br>
+                <h1>32px</h1>
+                <h3>Focusing on the aracteristic of slime mold to change its shape over time, we have combined digital media with organic movement</h3>
+                    <br><br><br>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-content">
+        <video src="img/0.webm" autoplay loop muted></video>
+        <div class="c2">
+            <img src="img/1.webp">
+            <img src="img/2.webp">
+        </div>
+        <div class="c2">
+            <img src="img/4.webp">
+            <img src="img/3.webp">
+        </div>
+        <img src="img/5.webp">
+    </div>
+    <div class="footer">
+        <img src="img/title-gray.svg" alt="title" id="footer-image">
+        <h1>Kouhei Niiyama</h1>
+    </div>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const element = document.getElementById("big-image");
+            element.style.left = "0";
+        });
+    </script>
+</body>
+</html>

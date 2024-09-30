@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@100;200;300;400;500;600;700&family=Noto+Sans+Mono:wght@100..900&display=swap');
+
+/* 全体のレイアウト */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Noto Sans Mono", "IBM Plex Sans JP";
+  font-weight: 400;
+  color: #ababab;
+  overflow-x: hidden; /* 横方向のスクロールを無効にして、余分な余白を排除 */
+}
+
+h1 {
+  color: #ababab;
+  font-weight: 400;
+}
+
+h4 {
+  font-family: nenkin;
+  color: white;
+  font-size: 148px;
+  font-weight: 600;
+  margin-top: 4px;
+  line-height: 1;
+  letter-spacing: -0.15em;
+  margin-right: -30vw;
+}
+
+h2 {
+  font-family: nenkin;
+  color: white;
+  font-size: 84px;
+  font-weight: 550;
+  margin-top: 4px;
+  line-height: 1.1;
+}
+
+h3 {
+  font-family: nenkin;
+  color: white;
+  font-size: 32px;
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  font-weight: 550;
+  margin-top: 4px;
+}
+
+p {
+  color: white;
+  transform: scale(0.87,1); transform-origin: top left;
+  font-weight: 340;
+
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.06em;
+  margin-top: 12px;
+}
+
+@font-face {
+  font-family: 'nenkin'; /* 編集 */
+  src: url('fonts/KN-PhysarumFont.ttf') ;  /* 編集 */
+}
+
+.nenkin {
+  font-family: nenkin;
+  font-size: 7vw;
+  letter-spacing: 0.084em;
+
+  margin-left: -20px;
+  width: 102%;
+
+  color: white;
+}
+
+/* コンテナを2列に分割 */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* 左側の固定エリア */
+.left-content {
+  width: auto; /* 左側の幅を指定 */
+  position: fixed; /* スクロールしても固定 */
+  height: 100vh; /* 高さを画面いっぱいに指定 */
+  overflow: hidden;
+  background-color: #070800; /* 背景色を指定 */
+  z-index: 1; /* 他のコンテンツより前に表示 */
+  top: 0;
+  left: 0; /* 左端に固定 */
+  text-align: center;
+}
+
+/* 左側の画像が高さに基づいて自動調整される */
+.full-height-image {
+  height: 100vh;
+  width: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* 右側のスクロール可能エリア */
+.right-content {
+  margin-left: 30%; /* 左側の幅に合わせてずらす */
+  overflow-y: scroll; /* 縦スクロールを可能にする */
+  height: 100vh;
+  background-color: #070800;
+  scrollbar-width: none; /* Firefox用: スクロールバーを非表示 */
+  -ms-overflow-style: none; /* Internet Explorer用: スクロールバーを非表示 */
+  position: relative; /* 追加 */
+  z-index: 8; /* 追加 */
+  margin-top: 0; /* 余白をなくす */
+  padding-top: 0; /* パディングをなくす */
+}
+
+/* Chrome, Safari, Opera用のスクロールバー非表示 */
+.right-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Middle-content と Bottom-content */
+.middle-content, .bottom-content {
+  width: 100vw;
+  left: 0;
+  padding: 48px;
+  background-color: #070800;
+  z-index: 5;
+  box-sizing: border-box;
+  position: relative;
+
+  border-top: #f9f9f95f 1px solid;
+}
+
+/* middle-contentがスクロールして上に固定される */
+.middle-content {
+  position: relative; /* 初期状態はrelative */
+  top: 0;
+  z-index: 9;
+}
+
+/* bottom-contentがmiddle-contentの下に続いて固定される */
+.bottom-content {
+  position: sticky; /* 追加 */
+  top: 0; /* 初期化 */
+  z-index: 10; /* middle-contentの下に表示する */
+  padding-bottom: 600px;
+}
+
+.bottom-content img {
+  width: 100%;
+  padding-left:10px;
+  padding-right: 32px;
+  height: auto;
+  padding-top: 12px;
+}
+
+.bottom-content video {
+  width: 100%;
+  height: auto;
+  padding-left:10px;
+  padding-right: 32px;
+}
+
+.scroll-content div {
+  padding: 28px;
+}
+
+.title {
+  background-color: #f6ff00;
+  height: 360px;
+}
+
+.title h1 {
+  color: #070800;
+}
+
+.preview {
+  border-left: #f9f9f95f 1px solid;
+  border-bottom: #f9f9f95f 1px solid;
+}
+
+.about {
+  border-left: #f9f9f95f 1px solid;
+  border-bottom: #f9f9f95f 1px solid;
+  padding: 24px;
+}
+
+.footer {
+  position: relative; /* または fixed, absolute など */
+  z-index: 10; /* 必要に応じて調整 */
+  overflow: visible; /* 必要に応じて調整 */
+  width: 100vw;
+  left: 0;
+  padding: 48px;
+  background-color: #070800;
+  box-sizing: border-box;
+  position: relative;
+
+  border-top: #f9f9f95f 1px solid;
+
+  text-align: center; /* フッター内のテキストを中央揃え */
+}
+
+.footer h1 {
+  transform-origin: top center!important;
+  margin: 0 auto; /* 上下のマージンを0にし、左右のマージンを自動に設定 */
+  margin-top: 70px;
+  margin-bottom: 50px;
+  padding: 0;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+
+.sentence-full {
+  width: 100vw;
+  background-image: url(img/grid_1.svg);
+  background-size: 50%;
+  background-repeat: repeat;
+  margin-left: -48px;
+  margin-bottom: -48px;
+  min-height: 50vh;
+}
+
+.sentence {
+  margin-right: 30vw;
+  margin-left: 48px;
+  padding-top: 90px;
+  padding-bottom: 28px;
+}
+
+#process-image {
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+#title-image {
+  margin: auto;
+  display: block;
+  width: 680px;
+  margin-top: 60px;
+}
+
+#footer-image {
+  margin: auto;
+  display: block;
+  width: 480px;
+  margin-top: 60px;
+}
+
+#yt {
+  position: absolute;
+  bottom: 24px;
+  right: 0;
+  width: 110px;
+  z-index: 100;
+}
+
+.right {
+  display: flex;
+  justify-content: right;
+  margin-top: -28px;
+  margin-left: -28px;
+}
+
+.fonts {
+  margin-top:-16px;
+}
+
+.slider-container {
+  width: 300px;
+  margin-top: -40px;
+  margin-right: -34px;
+}
+
+.slider-container h1 {
+  margin-left: 4px;
+  padding-right: 0;
+}
+
+.slider {
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 20px;
+  width: 100%;
+  color: white;
+  background: white;
+  height: 1px;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    background: #070800; 
+    width: 16px; 
+    height: 16px; 
+    outline: 1px solid white;
+    border-radius: 50%;
+  }
+}
+
+/* 画像のドラッグを禁止 */
+img {
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+.c2 {
+  display: flex;
+  margin-right: 24px;
+  width: auto;
+  max-width: 100%; /* 追加 */
+  max-height: 100%; /* 追加 */
+  justify-content: space-between;
+}
+
+.c2 img {
+  width: auto;
+  object-fit: cover;
+  height: 50%;
+  width: 50%;
+  padding: 10px;
+}
+
+@keyframes slide-left {
+  0% {
+      transform: translateX(0);
+  }
+  99.9999999% {
+      transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+}
+}
+
+#big-image {
+  margin-top: -30px;
+  height: 37vh;
+  display: block; /* 追加 */
+  animation: slide-left 1000s linear  infinite;
+}
